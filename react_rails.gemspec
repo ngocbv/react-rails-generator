@@ -11,4 +11,6 @@ Gem::Specification.new do |s|
   s.homepage    =
     'http://rubygems.org/gems/hello-neversmile'
   s.license       = 'MIT'
+  s.cert_chain  = ['certs/public_cert.pem']
+  s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 end
