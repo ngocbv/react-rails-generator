@@ -29,7 +29,7 @@ class InitReact
 }
 HEREDOC
 
-    File.open("#{@app_name}/out.txt", "w") do |f|
+    File.open("#{@app_name}/.babelrc", "w") do |f|
       f.write(babelrc)
     end
   end
@@ -112,6 +112,8 @@ HEREDOC
     "babel-preset-es2017": "^1.4.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-react": "^6.16.0",
+    "babel-plugin-add-module-exports": "~0.2.1",
+    "babel-plugin-transform-class-properties": "~6.19.0",
     "material-ui": "^0.16.0",
     "react": "^15.4.0",
     "react-addons-update": "^15.4.0",
@@ -169,6 +171,19 @@ HEREDOC
 
     File.open("#{@app_name}/webpack.config.js", "w") do |f|
       f.write(webpack_config)
+    end
+  end
+
+  def create_react_controller
+    controller = <<-HEREDOC
+class ReactAppController < ApplicationController
+  def home
+  end
+end
+HEREDOC
+
+    File.open("#{@app_name}/app/controllers/react_app_controller.rb", "w") do |f|
+      f.write(controller)
     end
   end
 end
