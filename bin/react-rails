@@ -1,14 +1,33 @@
 #!/usr/bin/env ruby
 
-require "generators/init_react"
 require "thor"
+require "active_support/inflector"
+require "generators/init_react"
+require "generators/controller"
 
-class ReactRails < Thor
-	desc "new <project_name>", "Initialize a Rails project combine with React"
-	def new project_name
-		system("rails new #{project_name}")
-		InitReact.new(project_name).init
+module ReactRailsCLI
+	class Generate < Thor
+		desc "scaffold <name> <parameters>", "Generate a full templates"
+		def scaffold name, *argv
+			puts argv
+		end
+
+		desc "controllers <name> <action_parameters", "Generate a controller"
+		def controllers name
+			Controller.generate_from_template name
+		end
+	end
+
+	class ReactRails < Thor
+		desc "new <project_name>", "Initialize a Rails project combine with React"
+		def new project_name
+			system("rails new #{project_name}")
+			InitReact.new(project_name).init
+		end
+
+		desc "generate SUBCOMMAND ...ARGS", "Generate other template"
+		subcommand "generate", Generate
 	end
 end
 
-ReactRails.start(ARGV)
+ReactRailsCLI::ReactRails.start(ARGV)

@@ -130,5 +130,12 @@ HEREDOC
     File.open("#{@app_name}/app/jsx/CallAPI/index.jsx", "w") do |f|
       f.write(index_api)
     end
+
+    FileUtils::mkdir_p "#{@app_name}/app/controllers/api"
+    api_controller_path = File.join(File.dirname(__FILE__), "../templates/controllers/api/base_api_controller.rb")
+    api_controller = File.read(api_controller_path)
+    File.open("#{@app_name}/app/controllers/api/base_api_controller.rb", "w") do |f|
+      f.write(api_controller)
+    end
   end
 end

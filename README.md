@@ -1,6 +1,6 @@
-[![Gem Version](https://badge.fury.io/rb/react-rails-generator.svg)](https://badge.fury.io/rb/react-rails-generator)
-
 # React Rails generator
+
+[![Gem Version](https://badge.fury.io/rb/react-rails-generator.svg)](https://badge.fury.io/rb/react-rails-generator)
 
 A simple gem that make combine React and Rails easier
 
@@ -36,5 +36,14 @@ And view the project works
 ## Contributing
 We love pull requests. Here's a quick guide:
 1. Fork the project
-2. Make the changes and push to your repository
-3. Make a pull request
+2. Comment these lines from Gem Specification
+```
+s.cert_chain  = ['certs/public_cert.pem']
+s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
+```
+3. To test your change
+  - git add .
+  - gem build react_rails.gemspec
+  - gem install react-rails-generator-version.gem
+4. Make the changes and push to your repository
+5. Make a pull request

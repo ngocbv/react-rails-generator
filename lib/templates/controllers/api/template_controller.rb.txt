@@ -1,0 +1,11 @@
+class Api::{{name_cp}}Controller < Api::BaseApiController
+  def index
+    {{name_p}} = {{name_c}}.all
+    response_success {{name_p}}: {{name_p}}
+  end
+
+  def show
+    {{name}} = {{name_c}}.find_by id: params[:id]
+    response_success {{name}}: {{name}}.as_json
+  end
+end
