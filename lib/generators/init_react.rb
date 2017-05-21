@@ -14,6 +14,10 @@ class InitReact
     add_react_wrapper
     create_package_json
     create_webpack_config
+
+    create_react_controller
+    create_react_view
+    add_to_routes
     test_path = File.join(File.dirname(__FILE__), "../templates/test.txt")
     puts File.read(test_path)
   end
@@ -186,6 +190,29 @@ HEREDOC
 
     File.open("#{@app_name}/app/controllers/react_app_controller.rb", "w") do |f|
       f.write(controller)
+    end
+  end
+
+  def create_react_view
+    FileUtils::mkdir_p "#{@app_name}/app/views/react_app"
+    File.open("#{@app_name}/app/views/react_app/home.html.erb", "w")
+  end
+
+  def add_to_routes
+    route = <<-HEREDOC
+  root "react_app#home"
+  get "*path", to: "react_app#home"
+HEREDOC
+
+    routes = File.readlines("#{@app_name}/config/routes.rb")
+    i = routes.length
+    while i > 1 do
+      routes[i] = routes[i-1]
+      i -= 1
+    end
+    routes[1] = route
+    File.open("#{@app_name}/config/routes.rb", "w") do |f|
+      f.write(routes.join)
     end
   end
 end
