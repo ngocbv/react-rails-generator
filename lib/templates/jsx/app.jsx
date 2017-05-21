@@ -49,6 +49,13 @@ class AppBarExampleComposition extends React.Component {
             </mui.IconButton>
           </mui.Badge>
         </div>
+
+        <h3>Date Picker</h3>
+        <div>
+          <mui.DatePicker hintText="Portrait Dialog" />
+          <mui.DatePicker hintText="Landscape Dialog" mode="landscape" />
+          <mui.DatePicker hintText="Dialog Disabled" disabled={true} />
+        </div>
       </div>
     );
   }
@@ -57,9 +64,10 @@ class AppBarExampleComposition extends React.Component {
 export default class App extends React.Component {
  render() {
    return (
-     <MuiThemeProvider muiTheme={getMuiTheme()}>
-       <AppBarExampleComposition />
-     </MuiThemeProvider>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        // You can replace AppBarExampleComposition to your code
+        <AppBarExampleComposition />
+      </MuiThemeProvider>
    );
  }
 }

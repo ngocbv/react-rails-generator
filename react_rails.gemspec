@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'react-rails-generator'
-  s.version     = '0.1.0'
+  s.version     = '0.2.0'
   s.executables << 'react-rails'
   s.date        = '2017-05-17'
   s.summary     = 'React Rails generator'
@@ -11,6 +11,6 @@ Gem::Specification.new do |s|
   s.homepage    =
     'https://github.com/NeverSmileK57CLC/react-rails-generator'
   s.license       = 'MIT'
-  # s.cert_chain  = ['certs/public_cert.pem']
-  # s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
+  s.cert_chain  = ['certs/public_cert.pem']
+  s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 end

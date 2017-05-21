@@ -1,7 +1,14 @@
 #!/usr/bin/env ruby
 
 require "generators/init_react"
+require "thor"
 
-system("rails new #{ARGV[0]}")
-InitReact.new(ARGV[0]).init
-Dir.chdir ARGV[0]
+class ReactRails < Thor
+	desc "new <project_name>", "Initialize a Rails project combine with React"
+	def new project_name
+		system("rails new #{project_name}")
+		InitReact.new(project_name).init
+	end
+end
+
+ReactRails.start(ARGV)

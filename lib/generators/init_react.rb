@@ -18,6 +18,7 @@ class InitReact
     create_react_controller
     create_react_view
     add_to_routes
+    init_api
   end
 
   def create_babelrc
@@ -112,6 +113,22 @@ HEREDOC
     routes[1] = route
     File.open("#{@app_name}/config/routes.rb", "w") do |f|
       f.write(routes.join)
+    end
+  end
+
+  def init_api
+    FileUtils::mkdir_p "#{@app_name}/app/jsx/CallAPI"
+
+    base_api_path = File.join(File.dirname(__FILE__), "../templates/jsx/CallAPI/BaseAPI.js")
+    base_api = File.read(base_api_path)
+    File.open("#{@app_name}/app/jsx/CallAPI/BaseAPI.js", "w") do |f|
+      f.write(base_api)
+    end
+
+    index_api_path = File.join(File.dirname(__FILE__), "../templates/jsx/CallAPI/index.jsx")
+    index_api = File.read(index_api_path)
+    File.open("#{@app_name}/app/jsx/CallAPI/index.jsx", "w") do |f|
+      f.write(index_api)
     end
   end
 end
