@@ -14,6 +14,8 @@ class InitReact
     add_react_wrapper
     create_package_json
     create_webpack_config
+    test_path = File.join(File.dirname(__FILE__), "../templates/test.txt")
+    puts File.read(test_path)
   end
 
   def create_babelrc
